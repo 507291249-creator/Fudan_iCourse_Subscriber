@@ -55,12 +55,14 @@ jobs:
           tar xf sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2024-07-17.tar.bz2
           rm sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2024-07-17.tar.bz2
           wget -q https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/silero_vad.onnx
-
+    
       - name: Cache RapidOCR models
         uses: actions/cache@v4
         with:
-          path: ~/.cache/rapidocr
-          key: rapidocr-onnx-default-v1
+         path: |
+          ~/.cache/rapidocr
+          ~/.rapidocr
+         key: rapidocr-onnx-default-v1
 
       - name: Fetch database from data branch
         run: |
