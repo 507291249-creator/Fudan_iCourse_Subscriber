@@ -177,7 +177,10 @@ jobs:
           SMTP_EMAIL: ${{ secrets.SMTP_EMAIL }}
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
-        run: python -u main.py
+        run: |
+         python -c "import os; print('[Debug] SMTP_EMAIL 接收长度:', len(os.environ.get('SMTP_EMAIL', '')))"
+         python -c "import os; print('[Debug] SMTP_PASSWORD 接收长度:', len(os.environ.get('SMTP_PASSWORD', '')))"
+         python -u main.py
 
       - name: Deploy database to data branch
         if: always()
